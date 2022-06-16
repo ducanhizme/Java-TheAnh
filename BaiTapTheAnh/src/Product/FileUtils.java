@@ -17,8 +17,6 @@ public class FileUtils {
                 System.out.println("Some thing went wrong");
             }
         }
-
-
     }
 
     public static List<MainProduct> readFromFile(String path){
@@ -29,7 +27,7 @@ public class FileUtils {
             String line ="";
             while (true){
                 line = br.readLine();
-                if(line ==null){
+                if(line == null){
                     break;
                 }
                 String file [] = line.split(Product.REGEX);

@@ -4,4 +4,5 @@ public interface ProductDao {
     void add();
     void edit();
     void delete();
+    void sort();
 }

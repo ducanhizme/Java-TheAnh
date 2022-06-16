@@ -65,6 +65,11 @@ public class Product implements ProductDao,SearchDao{
     }
 
     @Override
+    public void sort() {
+
+    }
+
+    @Override
     public void searchBy(String name) {
         checkFile(false);
         for(MainProduct e : this.listProducts){
@@ -78,7 +83,7 @@ public class Product implements ProductDao,SearchDao{
     public void searchBy(double price) {
         checkFile(false);
         for(MainProduct e : this.listProducts){
-            if(Double.compare(e.getPrice(),price)==0){
+            if(Double.compare(e.getPrice(),price) == 0){
                 System.out.println(e);
             }
         }
@@ -102,16 +107,20 @@ public class Product implements ProductDao,SearchDao{
         }
 
     }
-
     public void sortByPrice(){
         checkFile(true);
-        this.listProducts.sort(Collections.reverseOrder(Comparator.comparingDouble((MainProduct o) -> o.getPrice())));
+        this.listProducts.sort(Collections.reverseOrder(new Comparator<Product.MainProduct>() {
+            @Override
+            public int compare(MainProduct o1, MainProduct o2) {
+                return Double.compare(o1.getPrice(),o2.getPrice());
+            }
+        }));
         FileUtils.writeToFile(FILE_PATH,listProducts);
 
     }
     public void showProduct(){
         checkFile(false);
-        for (MainProduct e: this.listProducts) {
+        for (MainProduct e : this.listProducts) {
             System.out.println(e);
         }
     }
