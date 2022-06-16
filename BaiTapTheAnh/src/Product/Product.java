@@ -109,7 +109,7 @@ public class Product implements ProductDao,SearchDao{
     }
     public void sortByPrice(){
         checkFile(true);
-        this.listProducts.sort(Collections.reverseOrder(new Comparator<Product.MainProduct>() {
+        this.listProducts.sort(Collections.reverseOrder(new Comparator<MainProduct>() {
             @Override
             public int compare(MainProduct o1, MainProduct o2) {
                 return Double.compare(o1.getPrice(),o2.getPrice());
